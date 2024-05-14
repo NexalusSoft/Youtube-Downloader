@@ -1,3 +1,5 @@
+import re
+
 class YoutubeDownloader:
     """
     Class for downloading youtube videos
@@ -12,3 +14,17 @@ class YoutubeDownloader:
     def __init__(self, video_url: str, save_path: str) -> None:
         self.video_url = video_url
         self.save_path = save_path
+
+        self.video_id = self.extract_video_id(self.video_url)
+
+    def extract_video_id(self, url: str) -> str:
+        """
+        Extract video_id from url
+
+        Args:
+            url(str): url of the video
+
+        Returns:
+            video_id(str): id of the video
+        """
+        return re.search(r"((?<=(v|V)/)|(?<=be/)|(?<=(\?|\&)v=)|(?<=embed/))([\w-]+)", url).group(1)
