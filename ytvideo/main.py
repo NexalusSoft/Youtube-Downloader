@@ -18,6 +18,9 @@ class YoutubeDownloader:
 
         self.video_id = self.extract_video_id(self.video_url)
 
+        self.watch_url = f"https://youtube.com/watch?v={self.video_id}"
+        self.embed_url = f"https://www.youtube.com/embed/{self.video_id}"
+
     def extract_video_id(self, url: str) -> str:
         """
         Extract video_id from url
