@@ -1,5 +1,6 @@
 # Python Imports
 import re
+import requests
 
 class YoutubeDownloader:
     """
@@ -32,3 +33,6 @@ class YoutubeDownloader:
             video_id(str): id of the video
         """
         return re.search(r"((?<=(v|V)/)|(?<=be/)|(?<=(\?|\&)v=)|(?<=embed/))([\w-]+)", url).group(1)
+    
+    def get_content(self):
+        return requests.get(self.embed_url).content
