@@ -12,7 +12,7 @@ class YoutubeDownloader:
     """
     url: str
     path: str
-    _html_content: str
+    _html_content: bytes
 
     def __init__(self, url: str, path: str) -> None:
         self.video_url = url
@@ -36,7 +36,7 @@ class YoutubeDownloader:
         return re.search(r"((?<=(v|V)/)|(?<=be/)|(?<=(\?|\&)v=)|(?<=embed/))([\w-]+)", url).group(1)
     
     @property
-    def html_content(self):
+    def html_content(self) -> bytes:
         if self._html_content is None:
             self._html_content = requests.get(self.watch_url).content
         return self._html_content
