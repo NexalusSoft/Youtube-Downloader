@@ -37,6 +37,12 @@ class YoutubeDownloader:
     
     @property
     def html_content(self) -> bytes:
+        """
+        Get the html content of the video
+
+        Returns:
+            html_content(bytes): html content of the video
+        """
         if self._html_content is None:
             self._html_content = requests.get(self.watch_url).content
         return self._html_content
