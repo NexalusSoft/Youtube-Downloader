@@ -46,3 +46,13 @@ class YoutubeDownloader:
         if self._html_content is None:
             self._html_content = requests.get(self.watch_url).content
         return self._html_content
+    
+    @property
+    def video_title(self) -> str:
+        """
+        Get the title of the video
+
+        Returns:
+            title(str): title of the video
+        """
+        return re.search(r"\<title\>(.*)\<\/title\>", str(self.html_content)).group(1)
