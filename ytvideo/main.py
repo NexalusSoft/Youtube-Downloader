@@ -56,3 +56,13 @@ class YoutubeDownloader:
             title(str): title of the video
         """
         return re.search(r"\<title\>(.*)\<\/title\>", str(self.html_content)).group(1)
+        
+    @property
+    def video_thumbnail(self) -> str:
+        """
+        Get the thumbnail of the video
+
+        Returns:
+            thumbnail(str): thumbnail of the video
+        """
+        return re.search(r"src=\"(.*)\"", str(self.html_content)).group(1)
