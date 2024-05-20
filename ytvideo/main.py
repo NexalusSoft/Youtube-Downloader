@@ -69,3 +69,13 @@ class YoutubeDownloader:
 
     @property
     def video_info(self) -> dict:
+        """
+        Get the info of the video
+
+        Returns:
+            info(dict): info of the video
+        """
+        return {
+            "title": self.video_title,
+            "thumbnail": self.video_thumbnail
+        }
