@@ -68,3 +68,4 @@ class YoutubeDownloader:
         return re.search(r"src=\"(.*)\"", str(self.html_content)).group(1)
 
     @property
+    def video_info(self) -> dict:
